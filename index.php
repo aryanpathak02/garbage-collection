@@ -23,7 +23,7 @@ if( IS_GET &&  '/check_number_exists' == PATH && array_key_exists('number' , $_G
 
 
 
-//routing 
+//routing
 if( IS_POST && '/signup' == PATH ) {
 
     if( 
