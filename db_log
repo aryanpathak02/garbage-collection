@@ -1,0 +1,12 @@
+CREATE DATABASE garbage_collection;
+CREATE USER 'gc_user'@'localhost' IDENTIFIED BY 'Password@123';
+GRANT CREATE , SELECT, INSERT, UPDATE ON garbage_collection.* TO 'gc_user'@'localhost';
+CREATE TABLE users (
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NULL,
+    password VARCHAR(60) NOT NULL,
+    number varchar(15) unique not null ,
+    role ENUM('resident', 'garbage_collector', 'admin') NOT NULL,
+    PRIMARY KEY (id)
+);

@@ -1,6 +1,11 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
 
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__. '/templates');
+$twig = new \Twig\Environment($loader, [
+    // 'cache' => __DIR__ . '/twig_co',
+]);
 
 try {
     
@@ -37,4 +42,14 @@ function post_var( string $key ) {
         return null;
     }
 
+}
+
+function number_exists( $number ) :bool {
+
+    global $pdo;
+
+    $q = $pdo->prepare('select id from users where number = :number limit 1');
+    $q->execute(['number' => $number]);
+
+   return (bool)($q->rowCount());
 }
